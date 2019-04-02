@@ -1,0 +1,74 @@
+﻿@model CustomerMvcApp.Models.Customer
+
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+            
+
+<div class="col-md-8 col-md-offset-2">
+    <h1>Enter Customer Informations</h1>
+
+    @if (ViewBag.SMsg != null)
+    {
+        <p style="color:green; font-weight: bolder;">@(ViewBag.SMsg)</p>
+    }
+    else if (ViewBag.FMsg != null)
+    {
+        <p style="color:red; font-weight: bolder;">@(ViewBag.FMsg)</p>
+    }
+    
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            @Html.LabelFor(x => x.Name)
+            @Html.TextBoxFor(x => x.Name, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Name)
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Code)
+            @Html.TextBoxFor(x => x.Code, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Code)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Address)
+            @Html.TextBoxFor(x => x.Address, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Address)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Email)
+            @Html.TextBoxFor(x => x.Email, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Email)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Contact)
+            @Html.TextBoxFor(x => x.Contact, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Contact)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Age)
+            @Html.TextBoxFor(x => x.Age, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Age)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.LoyalityPoint)
+            @Html.TextBoxFor(x => x.LoyalityPoint, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.LoyalityPoint)
+        </div>
+
+        <div>
+            <input type="reset" class="btn btn-default btn-lg pull-left" value="Reset" />
+            <input type="submit" class="btn btn-primary btn-lg pull-right" value="Save">
+        </div>
+    }
+</div>

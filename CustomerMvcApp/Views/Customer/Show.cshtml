@@ -1,0 +1,65 @@
+﻿@model List<CustomerMvcApp.Models.Customer>
+
+@{
+    ViewBag.Title = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h1 class="text-center">Customers Detail Informations</h1>
+    @Html.ActionLink("Add Customer", "Add", "Customer", null, new { @class = "pull-left btn btn-info", @style = "margin-bottom:3px;" })
+    @Html.ActionLink("Search Page", "Search", "Customer", null, new { @class="pull-right btn btn-info", @style="margin-bottom:3px;"})
+</div>
+
+<div>
+    @if (ViewBag.SMsg != null)
+    {
+        <p style="color:green; font-weight: bolder;">@(ViewBag.SMsg)</p>
+    }
+    else if (ViewBag.FMsg != null)
+    {
+        <p style="color:red; font-weight: bolder;">@(ViewBag.FMsg)</p>
+    }
+</div>
+
+@if (Model != null && Model.Count > 0)
+{
+    var sl = 1;
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Sl</th>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Age</th>
+            <th>Loyality Point</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var customer in Model)
+        {
+
+            <tr>
+                <td>@(sl++)</td>
+                <td>@customer.Name</td>
+                <td>@customer.Code</td>
+                <td>@customer.Address</td>
+                <td>@customer.Email</td>
+                <td>@customer.Contact</td>
+                <td>@customer.Age</td>
+                <td>@customer.LoyalityPoint</td>
+                <td>
+                        @Html.ActionLink("Edit", "Edit", "Customer", new { id = customer.Id }, new { @target = "_blank", @class="btn btn-default btn-sm" })
+                        @Html.ActionLink("Delete", "Delete", "Customer", new { id = customer.Id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+    
+
+
+
